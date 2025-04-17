@@ -1,0 +1,16 @@
+---
+title: "Quarto Assignment - Community"
+author: "Jan Śmigielski"
+format: html
+editor: visual
+---
+
+![](quarto_assignment_files/images/Community_2009_logo.png)
+
+## Description of the show
+
+## Basic Statistics
+
+## Graphs
+
+## Conclusions
