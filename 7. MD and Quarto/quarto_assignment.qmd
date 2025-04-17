@@ -1,15 +1,23 @@
 ---
-title: "Quarto Assignment - Community"
-author: "Jan Śmigielski"
 format: html
 editor: visual
 ---
 
-![](quarto_assignment_files/images/Community_2009_logo.png)
+![](quarto_assignment_files/images/Community_2009_logo.png){width="300"}
 
 ## Description of the show
 
+*Community* is an American television sitcom created by Dan Harmon, which originally aired from 2009 to 2015. Set at the fictional Greendale Community College, the series centers on a group of unlikely students who form a study group and, over time, develop complex interpersonal relationships that extend beyond the academic setting. The show is known for its innovative narrative style, frequent use of meta-humor, intertextuality, and genre parody, often deconstructing traditional television tropes.
+
+Through its ensemble cast and episodic diversity, *Community* explores themes such as identity, friendship, institutional critique, and the dynamics of group behavior. Its unique blend of absurdist comedy and emotional depth has earned it a dedicated cult following and recognition for pushing the boundaries of the sitcom format. The series has also been the subject of academic interest due to its postmodern storytelling techniques and commentary on media and culture.
+
 ## Basic Statistics
+
+```{python}
+reticulate::use_condaenv("base", required = TRUE)
+import pandas as pd
+data = pd.read_csv('quarto_assignment_files/data/viewership.csv')
+```
 
 ## Graphs
 
