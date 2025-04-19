@@ -1,0 +1,136 @@
+---
+title: Quarto Assignment
+author: Jan Śmigielski
+format: html
+editor: visual
+jupyter: python3
+---
+
+![](quarto_assignment_files/images/Community_2009_logo.png){width="300"}
+
+## Description of the show
+
+*Community* is an American television sitcom created by Dan Harmon, which originally aired from 2009 to 2015. Set at the fictional Greendale Community College, the series centers on a group of unlikely students who form a study group and, over time, develop complex interpersonal relationships that extend beyond the academic setting. The show is known for its innovative narrative style, frequent use of meta-humor, intertextuality, and genre parody, often deconstructing traditional television tropes.
+
+Through its ensemble cast and episodic diversity, *Community* explores themes such as identity, friendship, institutional critique, and the dynamics of group behavior. Its unique blend of absurdist comedy and emotional depth has earned it a dedicated cult following and recognition for pushing the boundaries of the sitcom format. The series has also been the subject of academic interest due to its postmodern storytelling techniques and commentary on media and culture.
+
+## Basic Statistics
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+
+data = pd.read_csv('quarto_assignment_files/data/viewership.csv',sep = ';')
+data['views'] = data['views'].str.replace(',', '.', regex=False).astype(float)
+data['date'] = pd.to_datetime(data['date'])
+
+mean_views = round(data['views'].mean(),2)
+max_views = round(data['views'].max(),2)
+min_views = round(data['views'].min(),2)
+most_watched_episode = data.loc[data['views'].idxmax()]
+least_watched_episode = data.loc[data['views'].idxmin()]
+
+avg_season_views_dict = data.groupby('season')['views'].mean().round(2).to_dict()
+
+```
+
+### Viewership Summary
+- **Average viewership per episode**: **`{python} mean_views`** million.
+
+- **Highest viewership**: **`{python} most_watched_episode["episode"]`** (season 
+**`{python} most_watched_episode["season"]`**) with **`{python} most_watched_episode["views"]`** million views.
+
+- **Lowest viewership**: **`{python} least_watched_episode["episode"]`** (season 
+**`{python} least_watched_episode["season"]`**) with **`{python} least_watched_episode["views"]`** million views.
+
+
+### Season-wise Viewership
+
+- **Average viewership per season**:
+- **Season 1** average viewership: **`{python} avg_season_views_dict[1]`** million  
+- **Season 2** average viewership: **`{python} avg_season_views_dict[2]`** million  
+- **Season 3** average viewership: **`{python} avg_season_views_dict[3]`** million  
+- **Season 4** average viewership: **`{python} avg_season_views_dict[4]`** million  
+- **Season 5** average viewership: **`{python} avg_season_views_dict[5]`** million  
+
+## Graphs
+Unfortunately we only were able to gather the data about viewership for seasons 1 to 5 (not for season 6)
+
+### Viewership Over Time
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+
+plt.figure(figsize=(12, 6))
+plt.plot(data['date'], data['views'], marker='o', linestyle='-', color='teal', label='Viewership')
+plt.gca().xaxis.set_major_locator(mdates.MonthLocator(interval=2))
+plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%b %Y')) 
+plt.xlabel('Date')
+plt.ylabel('Views (in millions)')
+plt.grid(True)
+plt.xticks(rotation=45)  
+plt.legend()
+plt.tight_layout() 
+plt.show()
+```
+
+
+### Episode-to-Episode Change in Viewership
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+data['view_change'] = data['views'].diff()
+
+plt.figure(figsize=(12, 6))
+plt.plot(data.index, data['view_change'], marker='o', linestyle='-', color='teal')
+plt.axhline(0, color='gray', linestyle='--', linewidth=1)
+
+plt.xlabel('Episode Number')
+plt.ylabel('Change in Views (millions)')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+## Conclusions
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+avg_change_value = round(data["view_change"].mean(), 2)
+
+max_increase_value = round(data["view_change"].max(), 2)
+max_inc_ep = data.loc[data["view_change"].idxmax()]
+max_increase_ep = int(max_inc_ep["episode"])
+max_increase_season = int(max_inc_ep["season"])
+
+max_decrease_value = round(data["view_change"].min(), 2)
+max_dec_ep = data.loc[data["view_change"].idxmin()]
+max_decrease_ep = int(max_dec_ep["episode"])
+max_decrease_season = int(max_dec_ep["season"])
+
+season_avg = data.groupby("season")["views"].mean()
+season_change = season_avg.diff()
+
+max_season_drop_value = round(season_change.min(), 2)
+max_season_drop_to = season_change.idxmin()
+max_season_drop_from = max_season_drop_to - 1
+
+max_season_gain_value = round(season_change.max(), 2)
+max_season_gain_to = season_change.idxmax()
+max_season_gain_from = max_season_gain_to - 1
+```
+
+Throughout its five-season run, *Community* experienced notable fluctuations in viewership. The average change in viewership between episodes was modest, around **`{python} round(avg_change_value, 2)`** million viewers per episode. The largest increase in viewership occurred between episodes **`{python} max_increase_ep - 1`** and **`{python} max_increase_ep`**, where viewership rose by **`{python} round(max_increase_value, 2)`** million. Conversely, the sharpest drop took place between episode **`{python} max_decrease_ep - 1`** and **`{python} max_decrease_ep`**, with a decline of **`{python} abs(round(max_decrease_value, 2))`** million viewers.
+
+At the season level, the most significant decline in average viewership occurred between Season **`{python} max_season_drop_from`** and Season **`{python} max_season_drop_to`**, dropping by approximately **`{python} abs(round(max_season_drop_value, 2))`** million. Interestingly, Season **`{python} max_season_gain_to`** was the only season to show a positive change, increasing by about **`{python} round(max_season_gain_value, 2)`** million viewers compared to Season **`{python} max_season_gain_from`**.
+
+Overall, the show's popularity diminished with each passing season, with each season showing lower average viewership than the previous one. Additionally, the first episodes of each season consistently attracted the highest viewership, often surpassing the remaining episodes of that season.
+
