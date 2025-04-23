@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.26">
+<meta name="generator" content="quarto-1.7.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,18 +66,31 @@ ul.task-list li input[type="checkbox"] {
 <script src="quarto_assignment_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="quarto_assignment_files/libs/quarto-html/anchor.min.js"></script>
 <link href="quarto_assignment_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="quarto_assignment_files/libs/quarto-html/quarto-syntax-highlighting-53f539a478d6ecd1be31ce9fd30fd81c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="quarto_assignment_files/libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="quarto_assignment_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="quarto_assignment_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="quarto_assignment_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="quarto_assignment_files/libs/bootstrap/bootstrap-6b52511c24a4b4358e78ab8b0b52160a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#description-of-the-show" id="toc-description-of-the-show" class="nav-link active" data-scroll-target="#description-of-the-show">Description of the show</a></li>
+  <li><a href="#basic-statistics" id="toc-basic-statistics" class="nav-link" data-scroll-target="#basic-statistics">Basic Statistics</a></li>
+  <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs">Graphs</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="quarto_assignment.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -61,6 +109,12 @@ ul.task-list li input[type="checkbox"] {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">4/23/25</p>
+    </div>
+  </div>
   
     
   </div>
@@ -78,6 +132,27 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="basic-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="basic-statistics">Basic Statistics</h2>
+<div id="89dba034" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> mdates</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'quarto_assignment_files/data/viewership.csv'</span>,sep <span class="op">=</span> <span class="st">';'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'views'</span>] <span class="op">=</span> data[<span class="st">'views'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">'.'</span>, regex<span class="op">=</span><span class="va">False</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>mean_views <span class="op">=</span> <span class="bu">round</span>(data[<span class="st">'views'</span>].mean(),<span class="dv">2</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>max_views <span class="op">=</span> <span class="bu">round</span>(data[<span class="st">'views'</span>].<span class="bu">max</span>(),<span class="dv">2</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>min_views <span class="op">=</span> <span class="bu">round</span>(data[<span class="st">'views'</span>].<span class="bu">min</span>(),<span class="dv">2</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>most_watched_episode <span class="op">=</span> data.loc[data[<span class="st">'views'</span>].idxmax()]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>least_watched_episode <span class="op">=</span> data.loc[data[<span class="st">'views'</span>].idxmin()]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>avg_season_views_dict <span class="op">=</span> data.groupby(<span class="st">'season'</span>)[<span class="st">'views'</span>].mean().<span class="bu">round</span>(<span class="dv">2</span>).to_dict()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <section id="viewership-summary" class="level3">
 <h3 class="anchored" data-anchor-id="viewership-summary">Viewership Summary</h3>
 <ul>
@@ -89,16 +164,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="season-wise-viewership" class="level3">
 <h3 class="anchored" data-anchor-id="season-wise-viewership">Season-wise Viewership</h3>
 <ul>
-<li><strong>Average viewership per season</strong>:</li>
-<li><strong>Season 1</strong> average viewership: <strong>5.09</strong> million<br>
-</li>
-<li><strong>Season 2</strong> average viewership: <strong>4.24</strong> million<br>
-</li>
-<li><strong>Season 3</strong> average viewership: <strong>3.42</strong> million<br>
-</li>
-<li><strong>Season 4</strong> average viewership: <strong>2.9</strong> million<br>
-</li>
-<li><strong>Season 5</strong> average viewership: <strong>3.0</strong> million</li>
+<li><p><strong>Season 1</strong> average viewership: <strong>5.09</strong> million</p></li>
+<li><p><strong>Season 2</strong> average viewership: <strong>4.24</strong> million</p></li>
+<li><p><strong>Season 3</strong> average viewership: <strong>3.42</strong> million</p></li>
+<li><p><strong>Season 4</strong> average viewership: <strong>2.9</strong> million</p></li>
+<li><p><strong>Season 5</strong> average viewership: <strong>3.0</strong> million</p></li>
 </ul>
 </section>
 </section>
@@ -107,7 +177,25 @@ ul.task-list li input[type="checkbox"] {
 <p>Unfortunately we only were able to gather the data about viewership for seasons 1 to 5 (not for season 6)</p>
 <section id="viewership-over-time" class="level3">
 <h3 class="anchored" data-anchor-id="viewership-over-time">Viewership Over Time</h3>
-<div id="d0a9f69d" class="cell" data-message="false" data-execution_count="2">
+<div id="bff09701" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(data[<span class="st">'date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'</span><span class="sc">%d</span><span class="st">.%m.%Y'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.sort_values(<span class="st">'date'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.plot(data[<span class="st">'date'</span>], data[<span class="st">'views'</span>], marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, color<span class="op">=</span><span class="st">'teal'</span>, label<span class="op">=</span><span class="st">'Viewership'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_locator(mdates.MonthLocator(interval<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_formatter(mdates.DateFormatter(<span class="st">'%b %Y'</span>)) </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Date'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Views (in millions)'</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)  </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout() </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -119,7 +207,23 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="episode-to-episode-change-in-viewership" class="level3">
 <h3 class="anchored" data-anchor-id="episode-to-episode-change-in-viewership">Episode-to-Episode Change in Viewership</h3>
-<div id="af40e894" class="cell" data-message="false" data-execution_count="3">
+<div id="31062f98" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.sort_values(<span class="st">'episode'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'view_change'</span>] <span class="op">=</span> data[<span class="st">'views'</span>].diff()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.plot(data.index, data[<span class="st">'view_change'</span>], marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, color<span class="op">=</span><span class="st">'teal'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Episode Number'</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Change in Views (millions)'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -132,6 +236,35 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="conclusions" class="level2">
 <h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<div id="1280bb47" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>avg_change_value <span class="op">=</span> <span class="bu">round</span>(data[<span class="st">"view_change"</span>].mean(), <span class="dv">2</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>max_increase_value <span class="op">=</span> <span class="bu">round</span>(data[<span class="st">"view_change"</span>].<span class="bu">max</span>(), <span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>max_inc_ep <span class="op">=</span> data.loc[data[<span class="st">"view_change"</span>].idxmax()]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>max_increase_ep <span class="op">=</span> <span class="bu">int</span>(max_inc_ep[<span class="st">"episode"</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>max_increase_season <span class="op">=</span> <span class="bu">int</span>(max_inc_ep[<span class="st">"season"</span>])</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>max_decrease_value <span class="op">=</span> <span class="bu">round</span>(data[<span class="st">"view_change"</span>].<span class="bu">min</span>(), <span class="dv">2</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>max_dec_ep <span class="op">=</span> data.loc[data[<span class="st">"view_change"</span>].idxmin()]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>max_decrease_ep <span class="op">=</span> <span class="bu">int</span>(max_dec_ep[<span class="st">"episode"</span>])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>max_decrease_season <span class="op">=</span> <span class="bu">int</span>(max_dec_ep[<span class="st">"season"</span>])</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>season_avg <span class="op">=</span> data.groupby(<span class="st">"season"</span>)[<span class="st">"views"</span>].mean()</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>season_change <span class="op">=</span> season_avg.diff()</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>max_season_drop_value <span class="op">=</span> <span class="bu">round</span>(season_change.<span class="bu">min</span>(), <span class="dv">2</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>max_season_drop_to <span class="op">=</span> season_change.idxmin()</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>max_season_drop_from <span class="op">=</span> max_season_drop_to <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>max_season_gain_value <span class="op">=</span> <span class="bu">round</span>(season_change.<span class="bu">max</span>(), <span class="dv">2</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>max_season_gain_to <span class="op">=</span> season_change.idxmax()</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>max_season_gain_from <span class="op">=</span> max_season_gain_to <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p>Throughout its five-season run, <em>Community</em> experienced notable fluctuations in viewership. The average change in viewership between episodes was modest, around <strong>-0.05</strong> million viewers per episode. The largest increase in viewership occurred between episodes <strong>71</strong> and <strong>72</strong>, where viewership rose by <strong>1.4</strong> million. Conversely, the sharpest drop took place between episode <strong>1</strong> and <strong>2</strong>, with a decline of <strong>2.5</strong> million viewers.</p>
 <p>At the season level, the most significant decline in average viewership occurred between Season <strong>1</strong> and Season <strong>2</strong>, dropping by approximately <strong>0.85</strong> million. Interestingly, Season <strong>5</strong> was the only season to show a positive change, increasing by about <strong>0.1</strong> million viewers compared to Season <strong>4</strong>.</p>
 <p>Overall, the show’s popularity diminished with each passing season, with each season showing lower average viewership than the previous one. Additionally, the first episodes of each season consistently attracted the highest viewership, often surpassing the remaining episodes of that season.</p>

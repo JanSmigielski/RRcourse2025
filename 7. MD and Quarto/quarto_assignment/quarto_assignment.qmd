@@ -1,8 +1,23 @@
 ---
 title: Quarto Assignment
 author: Jan Śmigielski
-format: html
+format: 
+    html:
+        toc: true
+        toc-depth: 2
+        toc-location: left
+        code-fold: true
+        theme: lumen
+    docx:
+        toc: true
 editor: visual
+date: today
+date-format: short
+execute:
+    kernel: python3
+    echo: fenced
+    warning: false
+    message: false
 jupyter: python3
 ---
 
@@ -15,17 +30,14 @@ jupyter: python3
 Through its ensemble cast and episodic diversity, *Community* explores themes such as identity, friendship, institutional critique, and the dynamics of group behavior. Its unique blend of absurdist comedy and emotional depth has earned it a dedicated cult following and recognition for pushing the boundaries of the sitcom format. The series has also been the subject of academic interest due to its postmodern storytelling techniques and commentary on media and culture.
 
 ## Basic Statistics
+
 ```{python}
-#| echo: false
-#| warning: false
-#| message: false
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 data = pd.read_csv('quarto_assignment_files/data/viewership.csv',sep = ';')
 data['views'] = data['views'].str.replace(',', '.', regex=False).astype(float)
-data['date'] = pd.to_datetime(data['date'])
 
 mean_views = round(data['views'].mean(),2)
 max_views = round(data['views'].max(),2)
@@ -38,33 +50,34 @@ avg_season_views_dict = data.groupby('season')['views'].mean().round(2).to_dict(
 ```
 
 ### Viewership Summary
-- **Average viewership per episode**: **`{python} mean_views`** million.
 
-- **Highest viewership**: **`{python} most_watched_episode["episode"]`** (season 
-**`{python} most_watched_episode["season"]`**) with **`{python} most_watched_episode["views"]`** million views.
+-   **Average viewership per episode**: **`{python} mean_views`** million.
 
-- **Lowest viewership**: **`{python} least_watched_episode["episode"]`** (season 
-**`{python} least_watched_episode["season"]`**) with **`{python} least_watched_episode["views"]`** million views.
+-   **Highest viewership**: **`{python} most_watched_episode["episode"]`** (season **`{python} most_watched_episode["season"]`**) with **`{python} most_watched_episode["views"]`** million views.
 
+-   **Lowest viewership**: **`{python} least_watched_episode["episode"]`** (season **`{python} least_watched_episode["season"]`**) with **`{python} least_watched_episode["views"]`** million views.
 
 ### Season-wise Viewership
 
-- **Average viewership per season**:
-- **Season 1** average viewership: **`{python} avg_season_views_dict[1]`** million  
-- **Season 2** average viewership: **`{python} avg_season_views_dict[2]`** million  
-- **Season 3** average viewership: **`{python} avg_season_views_dict[3]`** million  
-- **Season 4** average viewership: **`{python} avg_season_views_dict[4]`** million  
-- **Season 5** average viewership: **`{python} avg_season_views_dict[5]`** million  
+-   **Season 1** average viewership: **`{python} avg_season_views_dict[1]`** million
+
+-   **Season 2** average viewership: **`{python} avg_season_views_dict[2]`** million
+
+-   **Season 3** average viewership: **`{python} avg_season_views_dict[3]`** million
+
+-   **Season 4** average viewership: **`{python} avg_season_views_dict[4]`** million
+
+-   **Season 5** average viewership: **`{python} avg_season_views_dict[5]`** million
 
 ## Graphs
+
 Unfortunately we only were able to gather the data about viewership for seasons 1 to 5 (not for season 6)
 
 ### Viewership Over Time
-```{python}
-#| echo: false
-#| warning: false
-#| message: false
 
+```{python}
+data['date'] = pd.to_datetime(data['date'], format='%d.%m.%Y')
+data = data.sort_values('date')
 plt.figure(figsize=(12, 6))
 plt.plot(data['date'], data['views'], marker='o', linestyle='-', color='teal', label='Viewership')
 plt.gca().xaxis.set_major_locator(mdates.MonthLocator(interval=2))
@@ -78,14 +91,11 @@ plt.tight_layout()
 plt.show()
 ```
 
-
 ### Episode-to-Episode Change in Viewership
-```{python}
-#| echo: false
-#| warning: false
-#| message: false
-data['view_change'] = data['views'].diff()
 
+```{python}
+data = data.sort_values('episode')
+data['view_change'] = data['views'].diff()
 plt.figure(figsize=(12, 6))
 plt.plot(data.index, data['view_change'], marker='o', linestyle='-', color='teal')
 plt.axhline(0, color='gray', linestyle='--', linewidth=1)
@@ -98,12 +108,8 @@ plt.show()
 ```
 
 ## Conclusions
+
 ```{python}
-#| echo: false
-#| warning: false
-#| message: false
-
-
 avg_change_value = round(data["view_change"].mean(), 2)
 
 max_increase_value = round(data["view_change"].max(), 2)
@@ -133,4 +139,3 @@ Throughout its five-season run, *Community* experienced notable fluctuations in 
 At the season level, the most significant decline in average viewership occurred between Season **`{python} max_season_drop_from`** and Season **`{python} max_season_drop_to`**, dropping by approximately **`{python} abs(round(max_season_drop_value, 2))`** million. Interestingly, Season **`{python} max_season_gain_to`** was the only season to show a positive change, increasing by about **`{python} round(max_season_gain_value, 2)`** million viewers compared to Season **`{python} max_season_gain_from`**.
 
 Overall, the show's popularity diminished with each passing season, with each season showing lower average viewership than the previous one. Additionally, the first episodes of each season consistently attracted the highest viewership, often surpassing the remaining episodes of that season.
-
