@@ -8,8 +8,10 @@ format:
         toc-location: left
         code-fold: true
         theme: lumen
+        tbl-colwidths: [25,75]
     docx:
         toc: true
+        tbl-colwidths: [25,75]
 editor: visual
 date: today
 date-format: short
@@ -49,25 +51,26 @@ avg_season_views_dict = data.groupby('season')['views'].mean().round(2).to_dict(
 
 ```
 
+::: panel-tabset
 ### Viewership Summary
 
--   **Average viewership per episode**: **`{python} mean_views`** million.
+-   **Average viewership per episode**: **`{python} float(mean_views)`** million.
 
--   **Highest viewership**: **`{python} most_watched_episode["episode"]`** (season **`{python} most_watched_episode["season"]`**) with **`{python} most_watched_episode["views"]`** million views.
+-   **Highest viewership**: **`{python} int(most_watched_episode["episode"])`** (season **`{python} int(most_watched_episode["season"])`**) with **`{python} float(most_watched_episode["views"])`** million views.
 
--   **Lowest viewership**: **`{python} least_watched_episode["episode"]`** (season **`{python} least_watched_episode["season"]`**) with **`{python} least_watched_episode["views"]`** million views.
+-   **Lowest viewership**: **`{python} int(least_watched_episode["episode"])`** (season **`{python} int(least_watched_episode["season"])`**) with **`{python} float(least_watched_episode["views"])`** million views.
 
 ### Season-wise Viewership
 
--   **Season 1** average viewership: **`{python} avg_season_views_dict[1]`** million
+| **Season** |     | **Average Viewership**                                |
+|------------|-----|-------------------------------------------------------|
+| **1**      |     | **`{python} avg_season_views_dict[1]`** million views |
+| **2**      |     | **`{python} avg_season_views_dict[2]`** million views |
+| **3**      |     | **`{python} avg_season_views_dict[3]`** million views |
+| **4**      |     | **`{python} avg_season_views_dict[4]`** million views |
+| **5**      |     | **`{python} avg_season_views_dict[5]`** million views |
 
--   **Season 2** average viewership: **`{python} avg_season_views_dict[2]`** million
-
--   **Season 3** average viewership: **`{python} avg_season_views_dict[3]`** million
-
--   **Season 4** average viewership: **`{python} avg_season_views_dict[4]`** million
-
--   **Season 5** average viewership: **`{python} avg_season_views_dict[5]`** million
+:::
 
 ## Graphs
 
@@ -134,8 +137,8 @@ max_season_gain_to = season_change.idxmax()
 max_season_gain_from = max_season_gain_to - 1
 ```
 
-Throughout its five-season run, *Community* experienced notable fluctuations in viewership. The average change in viewership between episodes was modest, around **`{python} round(avg_change_value, 2)`** million viewers per episode. The largest increase in viewership occurred between episodes **`{python} max_increase_ep - 1`** and **`{python} max_increase_ep`**, where viewership rose by **`{python} round(max_increase_value, 2)`** million. Conversely, the sharpest drop took place between episode **`{python} max_decrease_ep - 1`** and **`{python} max_decrease_ep`**, with a decline of **`{python} abs(round(max_decrease_value, 2))`** million viewers.
+Throughout its five-season run, *Community* experienced notable fluctuations in viewership. The average change in viewership between episodes was modest, around **`{python} round(float(avg_change_value), 2)`** million viewers per episode. The largest increase in viewership occurred between episodes **`{python} int(max_increase_ep) - 1`** and **`{python} int(max_increase_ep)`**, where viewership rose by **`{python} round(float(max_increase_value), 2)`** million. Conversely, the sharpest drop took place between episode **`{python} int(max_decrease_ep) - 1`** and **`{python} int(max_decrease_ep)`**, with a decline of **`{python} abs(round(float(max_decrease_value), 2))`** million viewers.
 
-At the season level, the most significant decline in average viewership occurred between Season **`{python} max_season_drop_from`** and Season **`{python} max_season_drop_to`**, dropping by approximately **`{python} abs(round(max_season_drop_value, 2))`** million. Interestingly, Season **`{python} max_season_gain_to`** was the only season to show a positive change, increasing by about **`{python} round(max_season_gain_value, 2)`** million viewers compared to Season **`{python} max_season_gain_from`**.
+At the season level, the most significant decline in average viewership occurred between Season **`{python} int(max_season_drop_from)`** and Season **`{python} int(max_season_drop_to)`**, dropping by approximately **`{python} abs(round(float(max_season_drop_value), 2))`** million. Interestingly, Season **`{python} int(max_season_gain_to)`** was the only season to show a positive change, increasing by about **`{python} round(float(max_season_gain_value), 2)`** million viewers compared to Season **`{python} int(max_season_gain_from)`**.
 
 Overall, the show's popularity diminished with each passing season, with each season showing lower average viewership than the previous one. Additionally, the first episodes of each season consistently attracted the highest viewership, often surpassing the remaining episodes of that season.

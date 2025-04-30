@@ -83,11 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#description-of-the-show" id="toc-description-of-the-show" class="nav-link active" data-scroll-target="#description-of-the-show">Description of the show</a></li>
-  <li><a href="#basic-statistics" id="toc-basic-statistics" class="nav-link" data-scroll-target="#basic-statistics">Basic Statistics</a>
-  <ul class="collapse">
-  <li><a href="#viewership-summary" id="toc-viewership-summary" class="nav-link" data-scroll-target="#viewership-summary">Viewership Summary</a></li>
-  <li><a href="#season-wise-viewership" id="toc-season-wise-viewership" class="nav-link" data-scroll-target="#season-wise-viewership">Season-wise Viewership</a></li>
-  </ul></li>
+  <li><a href="#basic-statistics" id="toc-basic-statistics" class="nav-link" data-scroll-target="#basic-statistics">Basic Statistics</a></li>
   <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs">Graphs</a>
   <ul class="collapse">
   <li><a href="#viewership-over-time" id="toc-viewership-over-time" class="nav-link" data-scroll-target="#viewership-over-time">Viewership Over Time</a></li>
@@ -140,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="basic-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="basic-statistics">Basic Statistics</h2>
-<div id="6c97cee2" class="cell" data-execution_count="1">
+<div id="c74ec936" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
@@ -161,31 +157,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="viewership-summary" class="level3">
-<h3 class="anchored" data-anchor-id="viewership-summary">Viewership Summary</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Viewership Summary</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Season-wise Viewership</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <ul>
 <li><p><strong>Average viewership per episode</strong>: <strong>3.93</strong> million.</p></li>
 <li><p><strong>Highest viewership</strong>: <strong>1</strong> (season <strong>1</strong>) with <strong>7.89</strong> million views.</p></li>
 <li><p><strong>Lowest viewership</strong>: <strong>79</strong> (season <strong>4</strong>) with <strong>2.32</strong> million views.</p></li>
 </ul>
-</section>
-<section id="season-wise-viewership" class="level3">
-<h3 class="anchored" data-anchor-id="season-wise-viewership">Season-wise Viewership</h3>
-<ul>
-<li><p><strong>Season 1</strong> average viewership: <strong>5.09</strong> million</p></li>
-<li><p><strong>Season 2</strong> average viewership: <strong>4.24</strong> million</p></li>
-<li><p><strong>Season 3</strong> average viewership: <strong>3.42</strong> million</p></li>
-<li><p><strong>Season 4</strong> average viewership: <strong>2.9</strong> million</p></li>
-<li><p><strong>Season 5</strong> average viewership: <strong>3.0</strong> million</p></li>
-</ul>
-</section>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 43%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Season</strong></th>
+<th></th>
+<th><strong>Average Viewership</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1</strong></td>
+<td></td>
+<td><strong>5.09</strong> million views</td>
+</tr>
+<tr class="even">
+<td><strong>2</strong></td>
+<td></td>
+<td><strong>4.24</strong> million views</td>
+</tr>
+<tr class="odd">
+<td><strong>3</strong></td>
+<td></td>
+<td><strong>3.42</strong> million views</td>
+</tr>
+<tr class="even">
+<td><strong>4</strong></td>
+<td></td>
+<td><strong>2.9</strong> million views</td>
+</tr>
+<tr class="odd">
+<td><strong>5</strong></td>
+<td></td>
+<td><strong>3.0</strong> million views</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
 <section id="graphs" class="level2">
 <h2 class="anchored" data-anchor-id="graphs">Graphs</h2>
 <p>Unfortunately we only were able to gather the data about viewership for seasons 1 to 5 (not for season 6)</p>
 <section id="viewership-over-time" class="level3">
 <h3 class="anchored" data-anchor-id="viewership-over-time">Viewership Over Time</h3>
-<div id="1cd29879" class="cell" data-execution_count="2">
+<div id="a8674364" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
@@ -215,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="episode-to-episode-change-in-viewership" class="level3">
 <h3 class="anchored" data-anchor-id="episode-to-episode-change-in-viewership">Episode-to-Episode Change in Viewership</h3>
-<div id="c1543958" class="cell" data-execution_count="3">
+<div id="f7a49a9f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
@@ -244,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="conclusions" class="level2">
 <h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
-<div id="896286ee" class="cell" data-execution_count="4">
+<div id="3897ea11" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
