@@ -1,0 +1,102 @@
+---
+title: "Metaanalysis Assignment"
+author: "Jan Śmigielski"
+format: html
+editor: visual
+---
+
+```{r, include=FALSE}
+library(readxl)
+library(dplyr)
+library(metafor)
+library(ggplot2)
+library(janitor)
+
+data <- read_excel("data/metaanalysis_data.xlsx") %>% clean_names()
+
+# Convert quality indicators to binary (1 = *, 0 = X)
+quality_cols <- c(
+  "case_definition_adequate",
+  "representativeness_of_cases",
+  "selection_of_controls",
+  "parental_opinion",
+  "comparability_of_both_groups",
+  "ascertainment_of_behaviour",
+  "same_ascertainment_method_for_both_groups",
+  "non_response_rate"
+)
+
+data <- data %>% mutate(across(all_of(quality_cols), ~ ifelse(. == "*", 1, 0)))
+
+meta_data <- escalc(
+  measure = "SMD",
+  m1i = mean_boys_play_male, sd1i = sd_boys_play_male, n1i = n_boys,
+  m2i = mean_girls_play_male, sd2i = sd_girls_play_male, n2i = n_girls,
+  data = data
+)
+
+res <- rma(yi, vi, data = meta_data, method = "REML")
+
+```
+
+## 1. Combine the Effects
+
+```{r}
+summary(res)
+```
+
+Overall, the results show that boys tend to prefer male-typed toys more than girls do, and this difference is clear and consistent across studies. However, the size of the difference isn't the same in every study, which means that things like how the study was done or where it took place might have an impact.
+
+## 2. Create a Funnel Plot
+
+```{r}
+funnel(res, main = "Funnel plot of effect sizes")
+```
+
+The funnel plot looks mostly symmetrical, with studies spread fairly evenly on both sides of the average effect. There are a few more studies on the right, but nothing extreme. This suggests that there's probably no major publication bias.
+
+## 3. Do Study Methods Affect Results?
+
+```{r}
+res_mod_neutral <- rma(yi, vi, mods = ~ factor(neutral_toys), data = meta_data)
+summary(res_mod_neutral)
+
+res_mod_parent <- rma(yi, vi, mods = ~ factor(parent_present), data = meta_data)
+summary(res_mod_parent)
+
+res_mod_setting <- rma(yi, vi, mods = ~ factor(setting), data = meta_data)
+summary(res_mod_setting)
+```
+
+The way the studies were set up --- like whether neutral toys were included, where the play took place, or how involved parents were --- didn\'t really make a big difference in the results. None of these study features had a clear impact on how strong the gender difference in toy preference was. So, while the overall effect is strong, it seems to show up regardless of how the study was run.
+
+## 4. Does Study Quality Affect Results?
+
+```{r}
+res_quality <- rma(yi, vi, mods = ~ 
+  case_definition_adequate + 
+  representativeness_of_cases + 
+  selection_of_controls + 
+  parental_opinion + 
+  comparability_of_both_groups + 
+  ascertainment_of_behaviour + 
+  same_ascertainment_method_for_both_groups + 
+  non_response_rate,
+  data = meta_data
+)
+summary(res_quality)
+```
+
+After including all the quality-related variables that actually varied between studies, none of them showed a strong or consistent effect on the results. The overall test for moderators wasn\'t significant, and none of the individual quality items clearly predicted differences in the gender effect. So, even though study quality was carefully assessed, it doesn\'t seem to explain why some studies found stronger effects than others.
+
+## 5. Does Author Gender Affect the Results?
+
+```{r}
+meta_data <- meta_data %>% 
+  mutate(author_female_share = female_authors / (female_authors + male_authors))
+
+res_gender <- rma(yi, vi, mods = ~ author_female_share, data = meta_data)
+summary(res_gender)
+```
+
+Whether the authors were mostly women or not didn\'t make a difference in the results. The size of the gender difference in toy preferences was similar regardless of the gender makeup of the research team. So, there\'s no sign that author gender influenced how the findings turned out.
